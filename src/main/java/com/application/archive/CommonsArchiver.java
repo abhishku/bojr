@@ -84,13 +84,12 @@ class CommonsArchiver implements Archiver {
         ArchiveEntry entry;
         while ((entry = input.getNextEntry()) != null) {
             File file = new File(destination, entry.getName());
-            
             extractingReport.addToFileNameList(entry.getName());
-
             if (!entry.isDirectory()) {
                 IOUtils.copy(input, file);
+            }else{
+                file.mkdirs();
             }
-
             FileModeMapper.map(entry, file);
         }
         extractingReport.createReportFile(destination);

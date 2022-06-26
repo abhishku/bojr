@@ -42,17 +42,16 @@ public class ExtractingReport {
 	}
 	
 	private void sortTheFileNames() {
-		for (int i = 1; i < fileNameList.size(); i++) {
-			String insertValue = fileNameList.get(i);
-			
-		    int j;
-		    for (j = i - 1; j > 0 && insertValue.compareTo(fileNameList.get(j)) < 0; j--) {
-		    	fileNameList.set(j + 1, fileNameList.get(j));
-		    }	
-		    
-		    if (j != i - 1) {
-		    	fileNameList.set(j + 1, insertValue);
-		    }		    
+		int i, j;
+		for (i = 1; i < fileNameList.size(); i++) {
+			j = i - 1;
+			while (j >= 0 && fileNameList.get(j).compareTo(fileNameList.get(i)) > 0) {
+				String obj = fileNameList.get(i);
+				fileNameList.set(i, fileNameList.get(j));
+				fileNameList.set(j, obj);
+				i = j;
+				j--;
+			}
 		}
 	}
 }
