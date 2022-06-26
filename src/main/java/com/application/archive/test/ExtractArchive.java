@@ -12,8 +12,8 @@ public class ExtractArchive {
 	public static void main(String[] args) {
 		
 		// Hardcoded for candidate testing purposes
-		String sourceFile = "test.zip";
-		String destinationFolder = "testZipExtracted";
+		String sourceFile = "destination/test2.zip";
+		String destinationFolder = "destinationFolder";
 		
 		File archive = new File( sourceFile );
 		File destination = new File( destinationFolder );
@@ -22,7 +22,7 @@ public class ExtractArchive {
 		try {
 			archiver.extract(archive, destination);
 			System.out.println("Done.");
-		} catch (IOException e) {		
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

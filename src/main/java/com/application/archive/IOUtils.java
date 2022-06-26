@@ -31,9 +31,12 @@ public final class IOUtils {
     public static void copy(InputStream source, File destination) throws IOException {
         OutputStream output = null;
 
-        try {
+        try {if(destination.isDirectory()){
+            destination.mkdirs();
+        }else {
             output = new FileOutputStream(destination);
             copy(source, output);
+        }
         } finally {
             closeQuietly(output);
         }
